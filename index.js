@@ -20,7 +20,7 @@ app.post("/posts/:id/comments", (req, res) => {
   const comments = commentsByPostId[req.params.id] || [];
   comments.push({ id: commentId, content, status: "pending" });
   axios
-    .post("http://localhost:4005/events", {
+    .post("http://e-bus-service:4005/events", {
       type: "CommentCreated",
       data: {
         id: commentId,
@@ -46,7 +46,7 @@ app.post("/events", (req, res) => {
     // we are already mutating the original object
     comment.status = status;
     axios
-      .post("http://localhost:4005/events", {
+      .post("http://e-bus-service:4005/events", {
         type: "CommentUpdated",
         data,
       })
