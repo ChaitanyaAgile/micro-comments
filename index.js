@@ -31,6 +31,7 @@ app.post("/posts/:id/comments", (req, res) => {
     })
     .catch((err) => console.log(err));
   commentsByPostId[req.params.id] = comments;
+  res.send({});
 });
 
 app.post("/events", (req, res) => {
